@@ -1,4 +1,9 @@
 <div>
+
+    @if ($this->channel->image)
+        <img src="{{ url('/images/' . $this->channel->image) }}" class="mb-3" />
+    @endif
+
     <form wire:submit.prevent="update">
 
         <div class="mb-3">
@@ -23,6 +28,20 @@
             @error('channel.description')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
             @enderror
+        </div>
+
+        <div class="mb-3">
+            <input type="file" wire:model="image">
+            @error('image')
+                <div class="alert alert-danger mt-2">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            @if ($image)
+                Image Preview:
+                <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail d-block mt-2">
+            @endif
         </div>
 
         <div>
