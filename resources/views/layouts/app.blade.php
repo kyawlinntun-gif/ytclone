@@ -9,12 +9,18 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{-- Alpine Js --}}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -55,7 +61,7 @@
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('video.create', ['channel' => Auth()->user()->channel]) }}" class="nav-link">
-                                    test
+                                    <i class="material-icons">video_call</i>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
