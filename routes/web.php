@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChannelController;
+use App\Http\Livewire\Video\AllVideo;
 use App\Http\Livewire\Video\CreateVideo;
 use App\Http\Livewire\Video\EditVideo;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/video', AllVideo::class)->name('video.all');
     Route::get('/video/{channel}/create', CreateVideo::class)->name('video.create');
     Route::get('/video/{channel}/{video}/edit', EditVideo::class)->name('video.edit');
 });

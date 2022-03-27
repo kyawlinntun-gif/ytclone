@@ -4,6 +4,16 @@
             <div class="card">
 
                 <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{ asset($this->video->thumbnail) }}" alt="" class="img-thumbnail">
+                        </div>
+                        <div class="col-4">
+                            Processing: ({{ $this->video->processing_percentage }})
+                        </div>
+                    </div>
+
                     <form wire:submit.prevent="update">
 
                         <div class="mb-3">

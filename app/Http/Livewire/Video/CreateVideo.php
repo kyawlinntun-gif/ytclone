@@ -53,7 +53,7 @@ class CreateVideo extends Component
 
         // Dispatch jobs
         CreateThumbnailFromVideo::dispatch($this->video);
-        // ConvertVideoForStreaming::dispatch($this->video);
+        ConvertVideoForStreaming::dispatch($this->video);
 
         // Redirect to edit route
         return redirect()->route('video.edit', ['channel' => $this->channel, 'video' => $this->video]);
