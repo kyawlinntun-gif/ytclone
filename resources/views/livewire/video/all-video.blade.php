@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" wire:poll>
     <div class="row">
         <div class="col-md-12">
             @foreach ($videos as $video)
@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-md-2">
                                 <button class="btn btn-light">Edit</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-danger" wire:click.prevent="deleted('{{ $video->uid }}')" >Delete</button>
                             </div>
                         </div>
                     </div>
