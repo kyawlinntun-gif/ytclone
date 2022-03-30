@@ -22,8 +22,13 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    @stack('customs-css')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     @livewireStyles
 </head>
 <body>
@@ -99,5 +104,6 @@
         </main>
     </div>
     @livewireScripts
+    @stack('scripts')
 </body>
 </html>
