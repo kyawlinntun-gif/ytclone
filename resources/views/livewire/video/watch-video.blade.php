@@ -4,7 +4,7 @@
     @endpush
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 mx-0 px-0">
                 <div class="video-container">
                     <div class="video-container">
                         <video controls preload="auto" id="yt-video" class="video-js vjs-fill vjs-styles=defaults vjs-big-play-centered" data-setup='{}' wire:ignore>
@@ -22,6 +22,22 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="mt-4">{{ $video->title }}</h2>
+                        <p class="text-gray">{{ $video->view }} views {{ $video->uploaded_date }}</p>
+                    </div>
+                    <div>
+                        <livewire:video.voting :video="$video">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
     </div>
     @push('scripts')
     <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
