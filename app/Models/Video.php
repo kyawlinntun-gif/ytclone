@@ -6,6 +6,7 @@ use App\Models\Like;
 use App\Models\Channel;
 use App\Models\Dislike;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -48,5 +49,15 @@ class Video extends Model
     public function dislikes()
     {
         return $this->hasMany(Dislike::class);
+    }
+
+    public function doesUserLiked()
+    {
+        return $this->likes()->where('user_id', Auth::user()->id)->exists();
+    }
+
+    public function doesUserDisliked()
+    {
+        return $this->dislikes()->where('user_id', Auth::user()->id)->exists();
     }
 }
