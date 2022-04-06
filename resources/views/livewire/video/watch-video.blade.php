@@ -33,8 +33,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"></div>
         </div>
+
+
+        <livewire:channel.channel-info :channel="$video->channel" />
 
     </div>
     @push('scripts')
