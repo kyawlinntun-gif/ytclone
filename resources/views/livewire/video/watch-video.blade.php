@@ -37,6 +37,7 @@
 
 
         <livewire:channel.channel-info :channel="$video->channel" />
+        <livewire:comment.all-comments :video="$video">
 
     </div>
     @push('scripts')

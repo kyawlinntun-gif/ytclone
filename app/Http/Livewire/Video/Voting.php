@@ -46,6 +46,11 @@ class Voting extends Component
 
     public function like()
     {
+        //Check Login user
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         //Check if user already like the video
         if ($this->video->doesUserLiked()) {
             Like::where('user_id', Auth::user()->id)->where('video_id', $this->video->id)->delete();
@@ -62,6 +67,11 @@ class Voting extends Component
 
     public function dislike()
     {
+        //Check Login user
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        
         //Check if user already dislike the video
         if ($this->video->doesUserDisliked()) {
             Dislike::where('user_id', Auth::user()->id)->where('video_id', $this->video->id)->delete();

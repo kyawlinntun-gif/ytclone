@@ -1,4 +1,4 @@
-<div class="my-5">
+<div class="my-5" wire:poll>
     
     <div class="row">
         <div class="col-md-8 d-flex justify-content-between align-items-center">
@@ -12,7 +12,7 @@
             </div>
 
             <div>
-                <button class="btn btn-lg text-uppercase {{ $userSubscribed ? 'sub-btn-active' : 'sub-btn' }}">
+                <button wire:click.prevent='toggle' class="btn btn-lg text-uppercase {{ $userSubscribed ? 'sub-btn-active' : 'sub-btn' }}">
                     {{ $userSubscribed ? 'Subscriber' : 'Subscribe' }}
                 </button>
             </div>

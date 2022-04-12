@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Like;
 use App\Models\Channel;
+use App\Models\Comment;
 use App\Models\Dislike;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -53,11 +54,25 @@ class Video extends Model
 
     public function doesUserLiked()
     {
-        return $this->likes()->where('user_id', Auth::user()->id)->exists();
+        if (Auth::check()) {
+            return $this->likes()->where('user_id', Auth::user()->id)->exists();
+        }
     }
 
     public function doesUserDisliked()
     {
-        return $this->dislikes()->where('user_id', Auth::user()->id)->exists();
+        if (Auth::check()) {
+            return $this->dislikes()->where('user_id', Auth::user()->id)->exists();
+        }
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function countComments()
+    {
+        return $this->comments->count();
     }
 }
