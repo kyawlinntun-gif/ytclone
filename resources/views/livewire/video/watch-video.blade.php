@@ -32,11 +32,17 @@
                         <livewire:video.voting :video="$video">
                     </div>
                 </div>
+                <hr>
             </div>
         </div>
 
 
         <livewire:channel.channel-info :channel="$video->channel" />
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <livewire:comment.new-comment :video="$video" :col=0 :key="$video->id">
+            </div>
+        </div>
         <livewire:comment.all-comments :video="$video">
 
     </div>

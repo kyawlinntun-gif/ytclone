@@ -18,6 +18,11 @@
             </div>
 
         </div>
+
+        <div class="col-md-8">
+            <hr>
+        </div>
+
     </div>
 
 </div>
