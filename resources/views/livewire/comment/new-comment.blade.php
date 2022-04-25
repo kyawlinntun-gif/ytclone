@@ -1,8 +1,8 @@
 <div>
     <div class="d-flex align-items-center">
-        <img src="{{ asset(auth()->user()->channel->img) }}" class="rounded-circle" height="40px">
+        <img src="{{ asset($video->channel->img) }}" class="rounded-circle" height="40px">
 
-        <input type="text" wire:model="body" class="comment-form-control">
+        <input type="text" wire:model="body" class="comment-form-control" placeholder="Add a public comment...">
     </div>
 
     @if ($body)

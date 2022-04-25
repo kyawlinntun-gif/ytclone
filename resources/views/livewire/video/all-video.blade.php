@@ -23,7 +23,7 @@
                                     <p>{{ $video->updated_at->format('d/m/Y') }}</p>
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-light">Edit</button>
+                                    <a href="{{ route('video.edit', [$channel, $video]) }}" class="btn btn-light" >Edit</a>
                                     <button class="btn btn-danger" wire:click.prevent="deleted('{{ $video->uid }}')" >Delete</button>
                                 </div>
                             </div>

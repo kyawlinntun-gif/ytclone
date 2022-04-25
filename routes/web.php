@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\ChannelController;
-use App\Http\Livewire\Channel\Channel;
-use App\Http\Livewire\Channel\ChannelMain;
+use App\Models\Channel;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\Video\AllVideo;
-use App\Http\Livewire\Video\CreateVideo;
+use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Video\EditVideo;
 use App\Http\Livewire\Video\WatchVideo;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Video\CreateVideo;
+use App\Http\Livewire\Channel\ChannelMain;
+use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //if logged in -- channels that I subscribed to
+    if (Auth::check()) {
+        $channels = Auth::user()->isSubscripted()->with('videos')->get()->pluck('videos');
+    } else {
+        // else all videos
+        $channels = Channel::get()->pluck('videos');
+    }
+
+    return view('welcome', [
+        'channels' => $channels
+    ]);
 });
 
 Auth::routes();
@@ -43,3 +54,7 @@ Route::middleware(['auth'])->group(function () {
 /* ---------- Start of Video Play ---------- */
 Route::get('/watch/{video}', WatchVideo::class)->name('video.watch');
 /* ---------- End of Video Play ---------- */
+
+/* ---------- Start of Search ---------- */
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+/* ---------- End of Search ---------- */

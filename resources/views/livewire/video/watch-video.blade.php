@@ -38,11 +38,17 @@
 
 
         <livewire:channel.channel-info :channel="$video->channel" />
-        <div class="row mb-5">
-            <div class="col-md-8">
-                <livewire:comment.new-comment :video="$video" :col=0 :key="$video->id">
+
+        <h4>{{ $video->countComments() }} comments</h4>
+
+        @auth
+            <div class="row mb-5">
+                <div class="col-md-8">
+                    <livewire:comment.new-comment :video="$video" :col=0 :key="$video->id">
+                </div>
             </div>
-        </div>
+        @endauth
+        
         <livewire:comment.all-comments :video="$video">
 
     </div>

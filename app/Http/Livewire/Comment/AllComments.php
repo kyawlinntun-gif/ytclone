@@ -10,6 +10,8 @@ class AllComments extends Component
 
     public $video;
 
+    protected $listeners = ['commentedCreated' => '$refresh'];
+
     public function mount(Video $video)
     {
         $this->video = $video;

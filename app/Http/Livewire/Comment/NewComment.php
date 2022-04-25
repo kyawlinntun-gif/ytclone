@@ -37,5 +37,6 @@ class NewComment extends Component
         $this->body = '';
 
         // emit events to refresh
+        $this->emit('commentedCreated');
     }
 }
